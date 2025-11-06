@@ -3,23 +3,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Cars List</title>
+    <title>Cars</title>
 </head>
 <body>
 <div>
-    <table border="1">
+    <table border="5">
         <thead>
         <tr>
-            <th>Brand</th>
-            <th>Model</th>
-            <th>Series</th>
+            <th width="100">Brand</th>
+            <th width="100">Model</th>
+            <th width="100">Year</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="car : ${cars}">
             <td th:text="${car.brand}"></td>
             <td th:text="${car.model}"></td>
-            <td th:text="${car.series}"></td>
+            <td th:text="${car.year}"></td>
         </tr>
         </tbody>
     </table>
