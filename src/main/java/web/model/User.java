@@ -6,7 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "users")
@@ -16,12 +17,14 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
-
+    @NotEmpty(message = "The name must not be empty")
+    @Size(min = 3, max = 15, message = "The name must contain between 3 and 15 letters")
     @Column(name = "firstName")
-    @NotBlank(message = "Имя не должно быть пустым")
     private String firstName;
+
+    @NotEmpty(message = "The last name must not be empty")
+    @Size(min = 3, max = 15, message = "The last name must contain from 3 to 15 letters")
     @Column(name = "lastName")
-    @NotBlank(message = "Фамилия не должна быть пустой")
     private String lastName;
 
     public User() {
