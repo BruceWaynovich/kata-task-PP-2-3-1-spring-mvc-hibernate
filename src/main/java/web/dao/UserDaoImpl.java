@@ -4,6 +4,7 @@ import org.springframework.stereotype.Repository;
 import web.model.User;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityNotFoundException;
 import javax.persistence.PersistenceContext;
 
 import java.util.List;
@@ -25,7 +26,11 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public User getUserById(int id) {
-        return entityManager.find(User.class, id);
+        User user = entityManager.find(User.class, id);
+        if (user == null) {
+            throw new EntityNotFoundException("Пользователь с ID " + id + " не найден");
+        }
+        return user;
     }
 
     @Override
@@ -36,6 +41,7 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public void delete(int id) {
-        entityManager.remove(entityManager.find(User.class, id));
+        User userToDelete = getUserById(id);
+        entityManager.remove(userToDelete);
     }
 }
