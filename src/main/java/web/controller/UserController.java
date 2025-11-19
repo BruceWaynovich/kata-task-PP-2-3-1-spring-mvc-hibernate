@@ -10,9 +10,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import web.model.User;
 import web.service.UserService;
 
-import javax.validation.Valid;
+
 
 import org.springframework.validation.BindingResult;
+
+import javax.validation.Valid;
+
 
 @Controller
 public class UserController {
@@ -36,7 +39,7 @@ public class UserController {
     }
 
     @PostMapping("/create")
-    public String createUser( @ModelAttribute("user")@Valid User user, BindingResult bindingResult) {
+    public String createUser(@ModelAttribute("user")@Valid User user, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "new";
         }
