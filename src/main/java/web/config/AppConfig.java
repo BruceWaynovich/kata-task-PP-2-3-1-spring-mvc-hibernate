@@ -59,7 +59,6 @@ public class AppConfig {
         properties.put("hibernate.show_sql", env.getProperty("hibernate.show_sql"));
         properties.put("hibernate.format_sql", env.getProperty("hibernate.format_sql"));
         properties.put("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
-        properties.put("javax.persistence.validation.mode", "callback");
         return properties;
     }
 }
